@@ -1,0 +1,2 @@
+NET "clk" LOC = "C9" | IOSTANDARD = LVCMOS33 ;
+//clk is clock used in this module

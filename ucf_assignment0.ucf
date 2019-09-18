@@ -1,0 +1,5 @@
+# Course : Computer Organization(EE2003)
+# UCF File for Assignment 0 - Design of Sequential Multiplier.
+
+# Replace clock_name with name of clock signal in top.v (top module for which bit stream is generated).
+NET "clock_name" LOC = "C9" | IOSTANDARD = LVCMOS33 ;
