@@ -27,7 +27,7 @@ module dmem_tb;
 	// Inputs
 	reg [31:0] indata;
 	reg [31:0] daddr;
-	reg [1:0] we;
+	reg [3:0] we;
 	reg clk;
 
 	// Outputs
@@ -76,15 +76,14 @@ always #5 clk = !clk;
 		// Wait 100 ns for global reset to finish
 		//note for syntax of apply and check
 		//1.apply_and_check(address[31:0],data[31:0],mode[1:0],expected value[31:0])
-		//2. mode 00 read 32 bit            ,01 32 bit write
-		//   mode  10 invalid but same as 00 ,11 write a byte at given address
+		//2. if you want to write at any byte of the adress put that we 1 and then input of that part gets written. 
 		//3. initial valuesof RAMs are zeros
 		#100;
-		apply_and_check(32'h00000000,32'h04030201,2'b01,32'h04030201);
-		apply_and_check(32'h00000002,32'h04060202,2'b11,32'h04020201);
-		apply_and_check(32'h000000A2,32'h04030202,2'b11,32'h00020000);
-		apply_and_check(32'h00100004,32'h12345678,2'b01,32'h12345678);
-		apply_and_check(32'h000000A2,32'h12345678,2'b00,32'h00020000);
+		apply_and_check(32'h00000000,32'h04030201,4'b1111,32'h04030201);
+		apply_and_check(32'h00000002,32'h04060202,4'b0100,32'h04060201);
+		apply_and_check(32'h000000A2,32'h04030202,4'b0100,32'h00030000);
+		apply_and_check(32'h00100004,32'h12345678,4'b1111,32'h12345678);
+		apply_and_check(32'h000000A2,32'h12345678,4'b0000,32'h00020000);
 		if (err > 0) begin
 			$display("FAIL %d out of %d", err, total);
 		end else begin
