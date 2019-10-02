@@ -30,9 +30,8 @@ module regi(
     output [31:0] rv2
     );
 reg [31:0] mem [0:31];
-reg [31:0] midd1,midd2;
-assign rv1 = midd1;
-assign rv2 = midd2;
+assign rv1 = mem[rs1];
+assign rv2 = mem[rs2];
 initial begin
 mem[{5'b0000}]<= 32'h00000000;
 end
@@ -43,7 +42,5 @@ always@(posedge clk)
     mem[rd] <= indata;
     mem[{5'b0000}] <= 32'h00000000;//trying to put x0 register to 0 always
     end
-  assign midd1 = mem[rs1];
-  assign midd2 = mem[rs2];
   end
 endmodule
