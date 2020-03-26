@@ -1,0 +1,38 @@
+﻿00000513				// addi        a0,zero,0
+//test #1
+00000093                // addi ra,zero,0
+00000113                // addi sp,zero,0
+00208733                // add a4,ra,sp
+00000e93                // addi t4,zero,0
+00200193                // addi gp,zero,2
+03d71963                // bne a4,t4,31 <fail>     #25  0000 0001 1001   
+//test #2
+00100093                // addi ra,zero,1
+00100113                // addi sp,zero,1
+00208733                // add a4,ra,sp
+00200e93                // addi t4,zero,2
+00300193                // addi gp,zero,3
+03d71763                // bne a4,t4,31 <fail>    #19   0000 0001 0111 
+//test #3
+00300093                // addi ra,zero,3
+00700113                // addi sp,zero,7
+00208733                // add a4,ra,sp
+00a00e93                // addi t4,zero,10
+00400193                // addi gp,zero,4
+01d71d63                // bne a4,t4,31 <fail>    #13  0000 0000 1101
+//test #4
+00000093                // addi ra,zero,0
+ffff8137                // lui sp,0xffff8
+00208733                // add a4,ra,sp
+ffff8eb7                // lui t4,0xffff8
+00500193                // addi gp,zero,5
+01d71763                // bne a4,t4,31 <fail>    #7   0000 0000 0111
+//test #5
+800000b7                // lui ra,0x80000
+00000113                // addi sp,zero,0
+00208733                // add a4,ra,sp
+80000eb7                // lui t4,0x80000
+00600193                // addi gp,zero,6
+01d71163                // bne a4,t4,31 <fail>     #1   0000 0000 0001
+//<fail>
+01c00093                // addi a0,a0,1
