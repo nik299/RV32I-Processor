@@ -1,0 +1,30 @@
+iaddr(PC)               IF_ID[63:32]   ID_EX[164:133]     EX_MEM[140:109]        end
+idata                   IF_ID[31:0]    end                end                    end
+rv1                                    ID_EX[132:101]     end                    end
+rv2                                    ID_EX[100:69]      end                    end
+rs1                     IF_ID[19:15]   ID_EX[63:59]       end                    end
+rs2                     IF_ID[24:20]   ID_EX[68:64]       end                    end
+funct3                  IF_ID[14:12]   ID_EX[58:56]       end                    end
+rd                      IF_ID[11:7]    ID_EX[55:51]       EX_MEM[108:104]        MEM_WB[107:103]
+alu_op                                 ID_EX[50:47]       end                    end
+imm                                    ID_EX[46:15]       end                    end
+r                                      ID_EX[14]          end                    end
+jal                                    ID_EX[13]          end                    end
+ui                                     ID_EX[12]          end                    end
+u_control                              ID_EX[11]          end                    end
+i                                      ID_EX[10]          end                    end
+s                                      ID_EX[9]           EX_MEM[103]            end
+branch                                 ID_EX[8]           end                    end
+jalr                                   ID_EX[7]           end                    end
+mem_read                               ID_EX[6]           EX_MEM[102]            MEM_WB[102]
+mem_read_sext                          ID_EX[5]           EX_MEM[101]            MEM_WB[101]
+regwe                                  ID_EX[4]           EX_MEM[100]            MEM_WB[100]
+iobytes                                ID_EX[3:0]         EX_MEM[99:96]          MEM_WB[99:96]
+memin                                                     EX_MEM[95:64]          end
+pcimm                                                     end                    end
+regwrite                                                  EX_MEM[63:32]          MEM_WB[95:64]
+aluout                                                    EX_MEM[31:0]           MEM_WB[63:32]
+Z                                                         end              end
+N                                                         end              end
+V                                                         end              end
+drdata                                                                           MEM_WB[31:0]

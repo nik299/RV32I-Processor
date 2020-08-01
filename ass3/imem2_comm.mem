@@ -1,0 +1,23 @@
+00000513			// addi a0,zero,0
+//test #1
+00100093            // addi ra,r0,0x1
+01c08093            // addi ra,ra,28 # 1c <begin_signature>
+0000a703            // lw a4,0(ra)
+00ff0eb7            // lui t4,0xff0
+0ffe8e93            // addi t4,t4,255 # ff00ff <_start-0x7f00ff01>
+00200193            // addi gp,zero,2
+03d71863            // bne a4,t4,24 <fail>
+//test #2
+00800097            // addi ra,r0,0x8
+01508093            // addi ra,ra,21 # 1c <begin_signature>
+0010a703            // lw a4,1(ra)
+ff010eb7            // lui t4,0xff010
+f00e8e93            // addi t4,t4,-256 # ff00ff00 <_end+0x7f00def0>
+00300193            // addi gp,zero,3
+03d71163            // bne a4,t4,17 <fail>
+@1c
+00ff                // Data
+ff00                // Data
+@1f
+//<fail>
+01c00093            // addi a0,a0,1
